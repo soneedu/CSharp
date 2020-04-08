@@ -90,7 +90,7 @@ internal sealed class SelfService
 		int num4 = default(int);
 		try
 		{
-			ProjectData.ClearProjectError();
+			Microsoft.VisualBasic.CompilerServices.ProjectData.ClearProjectError();
 			num = 1;
 			int num2 = 2;
 			if (Declarer.scannedFolders % 99 == 0)
@@ -101,33 +101,36 @@ internal sealed class SelfService
 			num2 = 4;
 			checked
 			{
-				if (Operators.CompareString(My.MyProject.Forms.Main.lFind.Tag.ToString(), "S", TextCompare: false) != 0)
+				if (Microsoft.VisualBasic.CompilerServices.Operators.CompareString(My.MyProject.Forms.Main.lFind.Tag.ToString(), "S", false) != 0)
 				{
 					num2 = 6;
-					string[] array = My.MySettingsProperty.Settings.exclude.ToLower().Split('|');
+					string text = My.MySettingsProperty.Settings.exclude.ToLower();
+					char[] array = new char[1];
+					array[0] = '|';
+					string[] array2 = text.Split(array);
 					num2 = 7;
-					string[] array2 = array;
+					string[] array3 = array2;
 					int num3 = 0;
 					while (true)
 					{
-						if (num3 >= array2.Length)
+						if (num3 >= array3.Length)
 						{
 							num2 = 11;
-							DirectoryInfo directoryInfo = new DirectoryInfo(path);
+							System.IO.DirectoryInfo directoryInfo = new System.IO.DirectoryInfo(path);
 							num2 = 12;
 							if (directoryInfo != null)
 							{
 								num2 = 14;
-								FileInfo[] files = directoryInfo.GetFiles();
+								System.IO.FileInfo[] files = directoryInfo.GetFiles();
 								num2 = 15;
 								Declarer.scannedFolders++;
 								num2 = 16;
 								Declarer.scannedFiles += files.Length;
 								num2 = 17;
-								FileInfo[] array3 = files;
-								for (int i = 0; i < array3.Length; num2 = 53, i++)
+								System.IO.FileInfo[] array4 = files;
+								for (int i = 0; i < array4.Length; num2 = 53, i++)
 								{
-									FileInfo fileInfo = array3[i];
+									System.IO.FileInfo fileInfo = array4[i];
 									num2 = 18;
 									if (fileInfo == null)
 									{
@@ -137,7 +140,7 @@ internal sealed class SelfService
 									if (My.MySettingsProperty.Settings.hidden)
 									{
 										num2 = 21;
-										if ((fileInfo.Attributes & FileAttributes.Hidden) > (FileAttributes)0)
+										if ((fileInfo.Attributes & System.IO.FileAttributes.Hidden) > (System.IO.FileAttributes)0)
 										{
 											continue;
 										}
@@ -148,9 +151,9 @@ internal sealed class SelfService
 										continue;
 									}
 									num2 = 25;
-									string text = fileInfo.Extension.ToLower() + ".";
+									string text2 = fileInfo.Extension.ToLower() + ".";
 									num2 = 26;
-									if (text.Length < 2)
+									if (text2.Length < 2)
 									{
 										continue;
 									}
@@ -158,7 +161,7 @@ internal sealed class SelfService
 									if (My.MyProject.Forms.Main.cbJPG.Checked)
 									{
 										num2 = 29;
-										if (".jpg.jpeg.jpe.".Contains(text))
+										if (".jpg.jpeg.jpe.j.".Contains(text2))
 										{
 											goto IL_032b;
 										}
@@ -167,7 +170,7 @@ internal sealed class SelfService
 									if (My.MyProject.Forms.Main.cbPNG.Checked)
 									{
 										num2 = 32;
-										if (".png.".Contains(text))
+										if (".png.".Contains(text2))
 										{
 											goto IL_032b;
 										}
@@ -176,7 +179,7 @@ internal sealed class SelfService
 									if (My.MyProject.Forms.Main.cbGIF.Checked)
 									{
 										num2 = 35;
-										if (".gif.".Contains(text))
+										if (".gif.".Contains(text2))
 										{
 											goto IL_032b;
 										}
@@ -185,7 +188,7 @@ internal sealed class SelfService
 									if (My.MyProject.Forms.Main.cbBMP.Checked)
 									{
 										num2 = 38;
-										if (".bmp.".Contains(text))
+										if (".bmp.".Contains(text2))
 										{
 											goto IL_032b;
 										}
@@ -194,7 +197,7 @@ internal sealed class SelfService
 									if (My.MyProject.Forms.Main.cbTIF.Checked)
 									{
 										num2 = 41;
-										if (".tif.tiff.".Contains(text))
+										if (".tif.tiff.".Contains(text2))
 										{
 											goto IL_032b;
 										}
@@ -203,7 +206,7 @@ internal sealed class SelfService
 									if (My.MyProject.Forms.Main.cbIcon.Checked)
 									{
 										num2 = 44;
-										if (".ico.".Contains(text))
+										if (".ico.".Contains(text2))
 										{
 											goto IL_032b;
 										}
@@ -214,34 +217,35 @@ internal sealed class SelfService
 										continue;
 									}
 									num2 = 47;
-									if (!Declarer.allPicExts.Replace(".jpg.jpeg.jpe.", ".").Replace(".png.", ".").Replace(".gif.", ".")
+									if (!Declarer.allPicExts.Replace(".jpg.jpeg.jpe.j.", ".").Replace(".png.", ".").Replace(".gif.", ".")
 										.Replace(".bmp.", ".")
 										.Replace(".tif.tiff.", ".")
 										.Replace(".ico.", ".")
-										.Contains(text))
+										.Contains(text2))
 									{
 										continue;
 									}
 									goto IL_032b;
-									IL_032b:
+								IL_032b:
 									num2 = 50;
 									if (!Declarer.ScannedResult.ContainsKey(fileInfo.Length))
 									{
 										num2 = 51;
-										Declarer.ScannedResult.Add(fileInfo.Length, new List<string>());
+										Declarer.ScannedResult.Add(fileInfo.Length, new System.Collections.Generic.List<string>());
 									}
 									num2 = 52;
 									Declarer.ScannedResult[fileInfo.Length].Add(fileInfo.FullName);
 								}
 								num2 = 54;
-								Application.DoEvents();
+								System.Windows.Forms.Application.DoEvents();
 								num2 = 55;
 								if (subFolders)
 								{
 									num2 = 56;
-									DirectoryInfo[] directories = directoryInfo.GetDirectories();
-									foreach (DirectoryInfo directoryInfo2 in directories)
+									System.IO.DirectoryInfo[] directories = directoryInfo.GetDirectories();
+									for (int j = 0; j < directories.Length; j++)
 									{
+										System.IO.DirectoryInfo directoryInfo2 = directories[j];
 										num2 = 57;
 										if (directoryInfo2 != null)
 										{
@@ -254,9 +258,9 @@ internal sealed class SelfService
 							}
 							break;
 						}
-						string str = array2[num3];
+						string str = array3[num3];
 						num2 = 8;
-						if (LikeOperator.LikeString(path.ToLower() + "\\", str + "\\*", CompareMethod.Binary))
+						if (Microsoft.VisualBasic.CompilerServices.LikeOperator.LikeString(path.ToLower() + "\\", str + "\\*", Microsoft.VisualBasic.CompareMethod.Binary))
 						{
 							break;
 						}
@@ -266,14 +270,15 @@ internal sealed class SelfService
 				}
 			}
 		}
-		catch (Exception obj) when ((obj is Exception && num != 0) & (num4 == 0))
+		catch (Exception obj) when ((obj is System.Exception && num != 0) & (num4 == 0))
 		{
-			ProjectData.SetProjectError((Exception)obj);
-			/*Error near IL_0515: Could not find block for branch target IL_04e5*/;
+			Microsoft.VisualBasic.CompilerServices.ProjectData.SetProjectError((System.Exception)obj);
+			/*Error near IL_0515: Could not find block for branch target IL_04e5*/
+			;
 		}
 		if (num4 != 0)
 		{
-			ProjectData.ClearProjectError();
+			Microsoft.VisualBasic.CompilerServices.ProjectData.ClearProjectError();
 		}
 	}
 

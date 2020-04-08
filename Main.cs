@@ -2037,7 +2037,7 @@ public class Main : Form
 								num = 44;
 								Declarer.scannedSize += driveInfo.TotalSize - driveInfo.TotalFreeSpace;
 								num = 45;
-								SelfService.ScanFiles(current, subFolders: true);
+								SelfService.ScanFiles(current, true);
 							}
 							num = 46;
 							if (Operators.CompareString(lFind.Tag.ToString(), "S", TextCompare: false) != 0)
@@ -2110,7 +2110,7 @@ public class Main : Form
 									num = 68;
 									Declarer.scannedSize += Conversions.ToLong(folder.Size);
 									num = 69;
-									SelfService.ScanFiles(objectValue2.ToString(), My.MySettingsProperty.Settings.subfolders);
+									SelfService.ScanFiles(objectValue2.ToString(), true);
 								}
 								else
 								{
@@ -2157,7 +2157,7 @@ public class Main : Form
 									num = 83;
 									Declarer.scannedSize += driveInfo2.TotalSize - driveInfo2.TotalFreeSpace;
 									num = 84;
-									SelfService.ScanFiles(driveInfo2.Name, subFolders: true);
+									SelfService.ScanFiles(driveInfo2.Name, true);
 								}
 								else
 								{
@@ -2194,7 +2194,7 @@ public class Main : Form
 										num = 96;
 										Declarer.scannedSize += driveInfo2.TotalSize - driveInfo2.TotalFreeSpace;
 										num = 97;
-										SelfService.ScanFiles(driveInfo2.Name, subFolders: true);
+										SelfService.ScanFiles(driveInfo2.Name, true);
 									}
 								}
 								num = 98;
