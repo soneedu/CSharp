@@ -411,7 +411,7 @@ public class Main : Form
             // 
             // lVirtual
             // 
-            this.lVirtual.AccessibleName = "find_tip3";
+            this.lVirtual.AccessibleName = "";
             this.lVirtual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lVirtual.ForeColor = System.Drawing.Color.White;
             this.lVirtual.Image = global::Resources.find128;
@@ -421,6 +421,9 @@ public class Main : Form
             this.lVirtual.TabIndex = 160;
             this.lVirtual.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tt.SetToolTip(this.lVirtual, "Finds the Duplicate Pictures According to Your Settings <F5>");
+            this.lVirtual.Click += new System.EventHandler(this.Buttons_Click);
+            this.lVirtual.MouseEnter += new System.EventHandler(this.Buttons_MouseEnter);
+            this.lVirtual.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
             // 
             // lFB
             // 
@@ -569,7 +572,7 @@ public class Main : Form
             // 
             // lOpt
             // 
-            this.lOpt.AccessibleName = "options1";
+            this.lOpt.AccessibleName = "";
             this.lOpt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lOpt.ForeColor = System.Drawing.Color.White;
             this.lOpt.Image = global::Resources.opt32;
@@ -579,6 +582,7 @@ public class Main : Form
             this.lOpt.TabIndex = 161;
             this.lOpt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tt.SetToolTip(this.lOpt, "Options <F7>");
+            this.lOpt.Click += new System.EventHandler(this.Buttons_Click);
             // 
             // lAbout
             // 
@@ -1926,6 +1930,7 @@ public class Main : Form
 	private void lFind_Click(object sender, EventArgs e)
 	{
 		//Discarded unreachable code: IL_1368, IL_1766, IL_1768, IL_1778, IL_179a
+		//My.MySettingsProperty.Settings.smart = true;
 		checked
 		{
 			int num2 = default(int);
@@ -2411,6 +2416,7 @@ public class Main : Form
 									num = 187;
 									listViewItem.SubItems.Add(file.DateLastModified.ToString());
 									num = 188;
+									Console.WriteLine(My.MySettingsProperty.Settings.smart);
 									if (My.MySettingsProperty.Settings.smart)
 									{
 										num = 189;
